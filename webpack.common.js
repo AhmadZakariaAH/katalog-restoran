@@ -42,16 +42,16 @@ module.exports = {
       },
       {
         test: /\.png$/,
-        type: 'asset/resource',
+        type: "asset/resource",
         generator: {
-          filename: 'png/[name][ext]',
+          filename: "png/[name][ext]",
         },
       },
       {
         test: /\.jpg$/,
-        type: 'asset/resource',
+        type: "asset/resource",
         generator: {
-          filename: 'jpg/[name][ext]',
+          filename: "jpg/[name][ext]",
         },
       },
     ],
