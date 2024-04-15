@@ -1,18 +1,27 @@
+import CacheHelper from './utils/cache-helper';
+
+const assetsToCache = [
+    './',
+    './icons/icon72x72.png',
+    './icons/icon96x96.png',
+    './icons/icon144x144.png',
+    './icons/icon192x192.png',
+    './icons/icon512x512.png',
+    './index.html',
+    './icons/tasteTrail-icon.png',
+    './app.bundle.js',
+    './app.webmanifest',
+    './sw.bundle.js',
+  ];
+
 self.addEventListener('install', (event) => {
-    console.log('Installing Service Worker ...');
-   
-    // TODO: Caching App Shell Resource
+    event.waitUntil(CacheHelper.cachingAppShell([...assetsToCache]));
   });
    
   self.addEventListener('activate', (event) => {
-    console.log('Activating Service Worker ...');
-   
-    // TODO: Delete old caches
+    event.waitUntil(CacheHelper.deleteOldCache());
   });
    
   self.addEventListener('fetch', (event) => {
-    console.log(event.request);
-   
-    event.respondWith(fetch(event.request));
-    // TODO: Add/get fetch request to/from caches
+    event.respondWith(CacheHelper.revalidateCache(event.request));
   });
