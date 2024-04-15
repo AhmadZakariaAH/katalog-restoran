@@ -2,6 +2,7 @@ import UrlParser from "../routes/url-parser";
 import routes from "../routes/routes";
 import DrawerInitiator from "../utils/drawer-initiator";
 import IndicatorInitiator from "../utils/indicator-initiator";
+import { fetchCount, fetchCountDecrement, fetchCountIncrement } from "../globals/global-variables";
 
 class App {
   constructor({ button, drawer, content }) {
@@ -23,7 +24,8 @@ class App {
 
   async renderPage() {
     try {
-      IndicatorInitiator.renderLoad(1);
+      fetchCountIncrement();
+      IndicatorInitiator.renderLoad(fetchCount);
       const url = UrlParser.parseActiveUrlWithCombiner();
       const page = routes[url];
       page.render().then((result) => {
@@ -32,9 +34,14 @@ class App {
       await page.afterRender();
     } catch (error) {
       this._content.html("<error-element></error-element>");
-      document.querySelector("error-element").render(error);
+      if (error.message === 'Failed to fetch') {
+        document.querySelector("error-element").renderError('noConnection');
+      } else if (error.message === "Cannot read properties of undefined (reading 'render')") {
+        document.querySelector("error-element").renderError('pageNotFound');
+      }
     } finally {
-      IndicatorInitiator.renderLoad(0);
+      fetchCountDecrement();
+      IndicatorInitiator.renderLoad(fetchCount);
     }
   }
 }

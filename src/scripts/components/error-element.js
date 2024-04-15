@@ -1,21 +1,25 @@
 import $ from "jquery";
-import { fetchFailed } from "../views/templates/template-error";
+import { fetchFailedTemplate, pageNotFoundTemplate, postFailedTemplate, fetchFailedMainPageTemplate } from "../views/templates/template-error";
 
 class ErrorElement extends HTMLElement {
-  render(error) {
-    switch (error.message) {
-      case "Failed to fetch":
-        $(this).html(fetchFailed(error));
-        $(".error-container").append(`
-                <h3>Check your internet connection.</h3>
-                `);
-        break;
-      case "Cannot read properties of undefined (reading 'render')":
-        $(this).html("<h2>Page not found</h2>");
-        break;
-      default:
-        console.log(error.message);
-    }
+  renderError(error) {
+    this[error]();
+  }
+
+  noConnection() {
+    $(this).html(fetchFailedTemplate());
+  }
+
+  noConnectionMainPage() {
+    $(this).html(fetchFailedMainPageTemplate());
+  }
+
+  pageNotFound() {
+    $(this).html(pageNotFoundTemplate());
+  }
+
+  postFailed() {
+    $(this).html(postFailedTemplate());
   }
 }
 

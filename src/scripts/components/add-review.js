@@ -1,6 +1,7 @@
 import $ from "jquery";
 import { addReviewTemplate } from "../views/templates/template-creator";
 import RestaurantAPISource from "../data/restaurant-API-source";
+import './error-element';
 
 class AddReview extends HTMLElement {
   connectedCallback() {
@@ -19,14 +20,18 @@ class AddReview extends HTMLElement {
       $('#addReviewForm').css('display', 'none');
       $('#addReviewButton').css('display', 'block');
     })
-    $('#addReviewForm').on('submit', (event) => {
+    $('#addReviewForm').on('submit', async (event) => {
       event.preventDefault();
       const reviewData = {
         id: $(this).attr('id'),
         name: $('#addReviewName').val(),
         review: $('#addReviewText').val()
       }
-      RestaurantAPISource.postReview(reviewData)
+      const postReview = await RestaurantAPISource.postReview(reviewData)
+      if (postReview === 'ERROR') {
+        $(this).before('<error-element></error-element>');
+        $("error-element")[0].renderError('postFailed');
+      }
     })
   }
 }

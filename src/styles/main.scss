@@ -82,6 +82,7 @@ header {
   min-height: 48px;
   border: 2px solid darkred;
   border-radius: 50%;
+  color: darkred;
 }
 
 #hamburgerButton {
@@ -328,8 +329,6 @@ fieldset {
 
 error-element {
   @include flex-box(column, center);
-
-  height: 40vh;
 }
 
 .button-class {

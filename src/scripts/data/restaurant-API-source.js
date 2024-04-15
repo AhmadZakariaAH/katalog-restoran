@@ -3,14 +3,11 @@ import API_ENDPOINT from "../globals/api-endpoint";
 class RestaurantAPISource {
   static async restaurantsList() {
     try {
-      console.log("start fetch");
       const response = await fetch(API_ENDPOINT.RESTAURANTS);
       const responseJson = await response.json();
       return responseJson.restaurants;
     } catch (error) {
       return error;
-    } finally {
-      console.log("end fetch");
     }
   }
 
@@ -21,15 +18,23 @@ class RestaurantAPISource {
   }
 
   static async detailRestaurants(id) {
-    const response = await fetch(API_ENDPOINT.DETAIL(id));
-    const responseJson = await response.json();
-    return responseJson.restaurant;
+    try {
+      const response = await fetch(API_ENDPOINT.DETAIL(id));
+      const responseJson = await response.json();
+      return responseJson.restaurant;
+    } catch(error) {
+      return error
+    }
   }
 
   static async searchRestaurants(query) {
-    const response = await fetch(API_ENDPOINT.SEARCH(query));
-    const responseJson = await response.json();
-    return responseJson.restaurants;
+    try {
+      const response = await fetch(API_ENDPOINT.SEARCH(query));
+      const responseJson = await response.json();
+      return responseJson.restaurants;
+    } catch(error) {
+      return error
+    }
   }
 
   static async postReview(query) {
@@ -43,8 +48,9 @@ class RestaurantAPISource {
         body: JSON.stringify(data)
       })
       const responseJson = await response.json()
+      return responseJson
     } catch(error) {
-      console.log(error)
+      return 'ERROR'
     }
   }
 }

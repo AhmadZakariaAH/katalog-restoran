@@ -49,7 +49,7 @@ const Restaurants = {
       });
       if (restaurants instanceof Error) {
         $(".item-catalogue").append("<error-element></error-element>");
-        $("error-element")[0].render(restaurants);
+        $("error-element")[0].renderError('noConnectionMainPage');
       } else {
         $("item-container")[0].render(restaurants, "menu-item");
       }

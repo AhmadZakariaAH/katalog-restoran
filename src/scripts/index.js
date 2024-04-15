@@ -1,9 +1,9 @@
 import "regenerator-runtime"; /* for async await transpile */
 import "../styles/main.scss";
 import $ from "jquery";
-import main from "./main";
 import "./components/item-container";
 import App from "./views/app";
+import swRegister from "./utils/sw-register";
 
 const app = new App({
   button: $("#hamburgerButton"),
@@ -18,4 +18,5 @@ $(window).on("hashchange", () => {
 
 $(window).on("load", () => {
   app.renderPage();
+  swRegister();
 });
