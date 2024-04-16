@@ -1,24 +1,24 @@
-import $ from "jquery";
+import $ from 'jquery';
 
 const DrawerInitiator = {
   init({ button, drawer, content }) {
-    $(button).on("click", (event) => {
+    $(button).on('click', (event) => {
       this._toggleDrawer(event, drawer);
     });
 
-    $(content).on("click", (event) => {
+    $(content).on('click', (event) => {
       this._closeDrawer(event, drawer);
     });
   },
 
   _toggleDrawer(event, drawer) {
     event.stopPropagation();
-    $(drawer).toggleClass("open");
+    $(drawer).toggleClass('open');
   },
 
   _closeDrawer(event, drawer) {
     event.stopPropagation();
-    $(drawer).removeClass("open");
+    $(drawer).removeClass('open');
   },
 };
 

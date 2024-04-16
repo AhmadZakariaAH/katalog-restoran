@@ -1,5 +1,11 @@
-import $ from "jquery";
-import { fetchFailedTemplate, pageNotFoundTemplate, postFailedTemplate, fetchFailedMainPageTemplate } from "../views/templates/template-error";
+import $ from 'jquery';
+import {
+  fetchFailedTemplate,
+  pageNotFoundTemplate,
+  postFailedTemplate,
+  fetchFailedMainPageTemplate,
+  noFavourite,
+} from '../views/templates/template-error';
 
 class ErrorElement extends HTMLElement {
   renderError(error) {
@@ -21,6 +27,10 @@ class ErrorElement extends HTMLElement {
   postFailed() {
     $(this).html(postFailedTemplate());
   }
+
+  noFavourite() {
+    $(this).html(noFavourite());
+  }
 }
 
-customElements.define("error-element", ErrorElement);
+customElements.define('error-element', ErrorElement);

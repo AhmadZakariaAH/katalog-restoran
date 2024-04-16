@@ -1,4 +1,4 @@
-import CONFIG from "../../globals/config";
+import CONFIG from '../../globals/config';
 
 const restaurantTemplate = (restaurant) => `<style>
 .main-container {
@@ -74,21 +74,21 @@ const restaurantTemplate = (restaurant) => `<style>
     font-size: x-large;
 }
 </style>
-<article class='main-container'>
-  <div class='img-container'>
-    <img src='${CONFIG.BASE_IMAGE_URL}medium/${restaurant.pictureId}' alt='Image of ${restaurant.name}'>
-    <div class='city-container'>
+<article class="main-container">
+  <div class="img-container">
+    <img src="${CONFIG.BASE_IMAGE_URL}medium/${restaurant.pictureId}" alt="Image of ${restaurant.name}">
+    <div class="city-container">
         <h3>${restaurant.city}</h3>
     </div>
   </div>
-  <div class='desc-head-container'>
-    <h3 id='item-name'>${restaurant.name}</h3>
-    <h4 id='item-rating'><i class='fas fa-star' aria-label='with Rating'></i> ${restaurant.rating} / 5</h4>
+  <div class="desc-head-container">
+    <h3 id="item-name">${restaurant.name}</h3>
+    <h4 id="item-rating"><i class="fas fa-star" aria-label="with Rating"></i> ${restaurant.rating} / 5</h4>
   </div>
-  <div class='desc-container'>
+  <div class="desc-container">
     <p>${restaurant.description}</p>
   </div>
-  <a class='further-link' href='#/detail/${restaurant.id}'>Further details &raquo;</a>
+  <a class="further-link" href="#/detail/${restaurant.id}">Further details &raquo;</a>
 </article>
 `;
 
@@ -168,8 +168,8 @@ dl dt {
     text-align: right;
 }
 
-#favouriteButton {
-  font-size: x-large;
+#favouriteButton, #favouritedButton {
+  font-size: large;
   border-radius: 16px;
   border: none;
   padding: 16px;
@@ -187,33 +187,37 @@ dl dt {
 }
 
 </style>
-<article class='main-container'>
-  <section class='img-container'>
-    <img class='detail-image' id='detail-image${restaurant.pictureId}' src='${CONFIG.BASE_IMAGE_URL}/large/${restaurant.pictureId}'>
+<article class="main-container">
+  <section class="img-container">
+    <img
+      class="detail-image" 
+      alt="detailed image of ${restaurant.name}"
+      id="detail-image${restaurant.pictureId}" 
+      src="${CONFIG.BASE_IMAGE_URL}/large/${restaurant.pictureId}">
   </section>
-  <section class='detail-body'>
-  <div class='container'>
+  <section class="detail-body">
+  <div class="container">
     <h2 class="heading-name">Overview</h2>
-    <fieldset class='overview-container'>
+    <fieldset class="overview-container">
       <legend>Information</legend>
-      <h3 class='overview-key'>Name :</h3>
-      <h3 id='item-name' class='overview-data'>${restaurant.name}</h3>
-      <h3 class='overview-key'>Categories :</h3>
-      <h3 id='item-categories' class='overview-data'></h3>
-      <h3 class='overview-key'><i class='fas fa-star' aria-label='with Rating'></i> Rating :</h3>
-      <h4 id='item-rating' class='overview-data'> ${restaurant.rating} / 5</h4>
-      <h3 class='overview-key'><i class='fas fa-map-marker' aria-label='Located at'></i> Address :</h3>
-      <h4 id='item-address' class='overview-data'>${restaurant.address}, ${restaurant.city}</h4>
+      <h3 class="overview-key">Name :</h3>
+      <h3 id="item-name" class="overview-data">${restaurant.name}</h3>
+      <h3 class="overview-key">Categories :</h3>
+      <h3 id="item-categories" class="overview-data"></h3>
+      <h3 class="overview-key"><i class="fas fa-star" aria-label="with Rating"></i> Rating :</h3>
+      <h4 id="item-rating" class="overview-data"> ${restaurant.rating} / 5</h4>
+      <h3 class="overview-key"><i class="fas fa-map-marker" aria-label="Located at"></i> Address :</h3>
+      <h4 id="item-address" class="overview-data">${restaurant.address}, ${restaurant.city}</h4>
     </fieldset>
-    <div>
-      <button id='favouriteButton'><i class='fas fa-plus fa-large favourite-icon'></i>Add to Favourite</button>
+    <div id="favouriteButtonContainer">
+      <button type="button" id="favouriteButton"><i class="fas fa-plus fa-large favourite-icon" aria-hidden="true"></i>Add to Favourite</button>
     </div>
   </div>
-  <div class='container'>
+  <div class="container">
     <h2 class="heading-name">Description</h2>
     <p>${restaurant.description}</p>
   </div>
-  <div class='container'>
+  <div class="container">
     <h2 class="heading-name">Menu</h2>
     <div class="menu-foods">
       <dl><b>Foods</b></dl>
@@ -222,11 +226,11 @@ dl dt {
       <dl><b>Drinks</b></dl>
     </div>
   </div>
-  <div class='container' id='customerReview'>
-    <h2 class='heading-name'>Customer Reviews</h2>
+  <div class="container" id="customerReview">
+    <h2 class="heading-name">Customer Reviews</h2>
   </div>
   </section>
-  <a class='back-link' href='#/restaurants'>&laquo; Back</a>
+  <a class="back-link" href="#/restaurants">&laquo; Back</a>
 </article>
 `;
 
@@ -254,12 +258,12 @@ const reviewTemplate = (customerReview) => `
             padding: 8px;
         }
     </style>
-    <article class='review-container'>
-        <div class='review-head'>
+    <article class="review-container">
+        <div class="review-head">
             <h3>${customerReview.name}</h3>
             <time>${customerReview.date}</time>
         </div>
-        <div class='review-body'>
+        <div class="review-body">
             <p>${customerReview.review}</p>
         </div>
     </article>
@@ -289,10 +293,10 @@ const searchTemplate = () => `
     height: 48px;
   }
   </style>
-  <form id='searchForm'>
+  <form id="searchForm">
     <label for="search-restaurants"></label>
-    <input type='search-restaurants' id='search-restaurants' placeholder='Name, categories, menu'>
-    <button type='submit' id='searchButton'><i class='fas fa-search'></i></button>
+    <input name="search-restaurants" type="search-restaurants" id="search-restaurants" placeholder="Name, categories, menu">
+    <button type="submit" id="searchButton"><i class="fas fa-search" aria-hidden="true"></i></button>
   </form>
 `;
 
@@ -336,17 +340,25 @@ const addReviewTemplate = () => `
     align-items: center;
   }
   </style>
-  <button id='addReviewButton' type='button'><i class='fas fa-plus'></i> Add review</button>
-  <form id='addReviewForm'>
-    <label for='addReviewName' class='add-review-info'>Your name</label>
-    <input name='addReviewName' id='addReviewName' class='add-review-info' type='text' required><br />
-    <label for='addReviewText' class='add-review-info' >Your review</label>
-    <textarea name='addReviewText' id='addReviewText' class='add-review-info' required></textarea><br />
-    <div class='review-button-container'>
-      <button type='button' id='reviewCancelButton'>Cancel</button>
-      <button type='submit' id='reviewPostButton'>Post</button>
+  <button id="addReviewButton" type="button"><i class="fas fa-plus" aria-hidden="true"></i> Add review</button>
+  <form id="addReviewForm">
+    <label for="addReviewName" class="add-review-info">Your name</label>
+    <input name="addReviewName" id="addReviewName" class="add-review-info" type="text" required><br />
+    <label for="addReviewText" class="add-review-info" >Your review</label>
+    <textarea name="addReviewText" id="addReviewText" class="add-review-info" required></textarea><br />
+    <div class="review-button-container">
+      <button type="button" id="reviewCancelButton">Cancel</button>
+      <button type="submit" id="reviewPostButton">Post</button>
     </div>
   </form>
+`;
+
+const createFavouriteButtonTemplate = () => `
+<button type="button" id="favouriteButton"><i class="fas fa-plus fa-large favourite-icon"></i>Add to Favourite</button>
+`;
+
+const createFavouritedButtonTemplate = () => `
+<button type="button" id="favouritedButton"><i class="fas fa-minus fa-large favourite-icon"></i>Remove from Favourite</button>
 `;
 export {
   restaurantTemplate,
@@ -354,4 +366,6 @@ export {
   reviewTemplate,
   searchTemplate,
   addReviewTemplate,
+  createFavouriteButtonTemplate,
+  createFavouritedButtonTemplate,
 };

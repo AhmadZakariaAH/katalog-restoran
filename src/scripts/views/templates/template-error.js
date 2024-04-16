@@ -22,7 +22,7 @@ const fetchFailedTemplate = () => `
     <h2>Unable to request data</h2>
     <h3>Check your internet connection.</h3>
   </article>
-`
+`;
 
 const fetchFailedMainPageTemplate = () => `
   <style>
@@ -47,7 +47,7 @@ const fetchFailedMainPageTemplate = () => `
     <h2>Unable to request data</h2>
     <h3>Check your internet connection.</h3>
   </article>
-`
+`;
 
 const pageNotFoundTemplate = () => `
 <style>
@@ -105,4 +105,36 @@ const postFailedTemplate = () => `
 </article>
 `;
 
-export { fetchFailedTemplate, fetchFailedMainPageTemplate, pageNotFoundTemplate, postFailedTemplate };
+const noFavourite = () => `
+  <style>
+    .error-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 16px;
+    }
+
+    .error-container h2 {
+      margin: 8px 0 8px 0;
+      text-align: center;
+    }
+    
+    .error-container h3 {
+      margin: 0;
+      text-align: center;
+    }
+  </style>
+  <article class='error-container'>
+    <h2>You have no favourite restaurant</h2>
+    <h3>To add them, see the restaurant's detailed page.</h3>
+  </article>
+`;
+
+export {
+  fetchFailedTemplate,
+  fetchFailedMainPageTemplate,
+  pageNotFoundTemplate,
+  postFailedTemplate,
+  noFavourite,
+};

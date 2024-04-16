@@ -1,4 +1,4 @@
-import $ from "jquery";
+import $ from 'jquery';
 
 class ButtonContainer extends HTMLElement {
   render() {
@@ -28,4 +28,4 @@ class ButtonContainer extends HTMLElement {
   }
 }
 
-customElements.define("button-container", ButtonContainer);
+customElements.define('button-container', ButtonContainer);

@@ -1,6 +1,6 @@
-import $ from "jquery";
-import "./menu-item";
-import "./button-container";
+import $ from 'jquery';
+import './menu-item';
+import './button-container';
 
 class ItemContainer extends HTMLElement {
   render(data, type) {
@@ -11,4 +11,4 @@ class ItemContainer extends HTMLElement {
   }
 }
 
-customElements.define("item-container", ItemContainer);
+customElements.define('item-container', ItemContainer);

@@ -1,5 +1,5 @@
-import $ from "jquery";
-import { searchTemplate } from "../views/templates/template-creator";
+import $ from 'jquery';
+import { searchTemplate } from '../views/templates/template-creator';
 
 class SearchBar extends HTMLElement {
   connectedCallback() {
@@ -9,13 +9,13 @@ class SearchBar extends HTMLElement {
   render() {
     $(this).html(searchTemplate());
     $(this)
-      .find("#searchButton")
-      .on("click", (event) => {
-        event.stopPropagation();
-        const query = $(this).find("#search-restaurants").val();
-        window.location.href = `#/search/${query}`;
+      .find('#searchForm')
+      .on('submit', (event) => {
+        event.preventDefault();
+        const query = $(this).find('#search-restaurants').val();
+        window.location.href = `#/search/${query === '' ? '-' : query}`;
       });
   }
 }
 
-customElements.define("search-bar", SearchBar);
+customElements.define('search-bar', SearchBar);
