@@ -1,21 +1,20 @@
-import UrlParser from '../routes/url-parser';
-import routes from '../routes/routes';
-import DrawerInitiator from '../utils/drawer-initiator';
-import IndicatorInitiator from '../utils/indicator-initiator';
+import UrlParser from "../routes/url-parser";
+import routes from "../routes/routes";
+import DrawerInitiator from "../utils/drawer-initiator";
+import IndicatorInitiator from "../utils/indicator-initiator";
 import {
   fetchCount,
   fetchCountDecrement,
   fetchCountIncrement,
-} from '../globals/global-variables';
+} from "../globals/global-variables";
 
 class App {
-  constructor({
-    button, drawer, content, loadingIndicator,
-  }) {
+  constructor({ button, drawer, content, loadingIndicator, skipLink }) {
     this._button = button;
     this._drawer = drawer;
     this._content = content;
     this._loadingIndicator = loadingIndicator;
+    this._skipLink = skipLink;
     this._initialAppShell();
   }
 
@@ -39,14 +38,14 @@ class App {
       });
       await page.afterRender();
     } catch (error) {
-      this._content.html('<error-element></error-element>');
-      if (error.message === 'Failed to fetch') {
-        document.querySelector('error-element').renderError('noConnection');
+      this._content.html("<error-element></error-element>");
+      if (error.message === "Failed to fetch") {
+        document.querySelector("error-element").renderError("noConnection");
       } else if (
-        error.message
-        === "Cannot read properties of undefined (reading 'render')"
+        error.message ===
+        "Cannot read properties of undefined (reading 'render')"
       ) {
-        document.querySelector('error-element').renderError('pageNotFound');
+        document.querySelector("error-element").renderError("pageNotFound");
       }
     } finally {
       fetchCountDecrement();

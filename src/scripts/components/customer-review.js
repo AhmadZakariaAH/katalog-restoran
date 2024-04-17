@@ -1,5 +1,5 @@
-import $ from 'jquery';
-import { reviewTemplate } from '../views/templates/template-creator';
+import $ from "jquery";
+import { reviewTemplate } from "../views/templates/template-creator";
 
 class CustomerReview extends HTMLElement {
   render(data) {
@@ -7,4 +7,4 @@ class CustomerReview extends HTMLElement {
   }
 }
 
-customElements.define('customer-review', CustomerReview);
+customElements.define("customer-review", CustomerReview);

@@ -42,7 +42,7 @@ body {
 
 /* header section */
 header {
-  @include flex-box(column, center);
+  @include flex-box(column, space-around);
 
   width: 100%;
   position: sticky;
@@ -189,6 +189,10 @@ select {
   border-radius: 8px;
 }
 
+#reservation-form {
+  margin: 16px;
+}
+
 textarea {
   font-size: 16px;
   min-height: 10em;
@@ -206,10 +210,15 @@ textarea {
   background-color: darkred;
   color: white;
   border-radius: 8px;
+  width: 100%;
+  font-size: large;
 }
 
 fieldset {
   margin-bottom: 16px;
+  border: 2px darkred solid;
+  color: darkred;
+  border-radius: 16px;
 }
 
 .main-section,
@@ -229,6 +238,10 @@ error-element {
   }
 }
 
+.older-news {
+  color: darkred;
+  text-align: center;
+}
 /* footer section */
 footer {
   @include flex-box(column, center);
@@ -238,7 +251,8 @@ footer {
   padding: 16px;
   width: 100%;
 
-  h3, h4 {
+  h3,
+  h4 {
     margin: 0;
     text-align: center;
   }
@@ -340,6 +354,14 @@ loading-indicator {
   }
 }
 
+@media screen and (max-width: 425px) {
+  .news-container {
+    margin: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 @media screen and (min-width: 1440px) {
   .main-section {
     display: grid;
@@ -352,7 +374,8 @@ loading-indicator {
 
 @media screen and (min-width: 1200px) {
   #hero-img {
-    width: auto;
+    width: 100vw;
+    object-fit: cover;
     min-width: 1000px;
   }
 }
@@ -389,7 +412,7 @@ loading-indicator {
 
       li {
         margin: 0 8px 0 8px;
-        font-size: 36px;
+        font-size: xx-large;
         width: auto;
         padding: 16px;
         height: 100%;
@@ -429,6 +452,37 @@ loading-indicator {
 }
 
 @media screen and (min-width: 768px) {
+  .reservation {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .reservation-flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .reservation-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+  }
+
+  .reservation-time-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 8px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .reservation-time-label {
+    text-align: left;
+    vertical-align: middle;
+  }
+
   textarea {
     min-height: 6em;
   }
@@ -440,7 +494,20 @@ loading-indicator {
     margin: 0 auto;
   }
 
+  news-container {
+    @include flex-box(row, center);
+  }
+
   .item-catalogue {
     margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 426px) {
+  .news-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    margin: 16px;
   }
 }

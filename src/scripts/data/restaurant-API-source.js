@@ -1,4 +1,4 @@
-import API_ENDPOINT from '../globals/api-endpoint';
+import API_ENDPOINT from "../globals/api-endpoint";
 
 class RestaurantAPISource {
   static async restaurantsList() {
@@ -11,18 +11,12 @@ class RestaurantAPISource {
     }
   }
 
-  static async favouriteRestaurants() {
-    const response = await fetch(API_ENDPOINT.FAVOURITE);
-    const responseJson = await response.json();
-    return responseJson.restaurants;
-  }
-
   static async detailRestaurants(id) {
     try {
       const response = await fetch(API_ENDPOINT.DETAIL(id));
       const responseJson = await response.json();
       if (responseJson.error) {
-        throw new Error('Restaurant not found');
+        throw new Error("Restaurant not found");
       } else {
         return responseJson.restaurant;
       }
@@ -45,16 +39,16 @@ class RestaurantAPISource {
     try {
       const data = query;
       const response = await fetch(API_ENDPOINT.REVIEW, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-type': 'application/json',
+          "Content-type": "application/json",
         },
         body: JSON.stringify(data),
       });
       const responseJson = await response.json();
       return responseJson;
     } catch (error) {
-      return 'ERROR';
+      return "ERROR";
     }
   }
 }

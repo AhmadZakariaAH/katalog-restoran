@@ -1,9 +1,9 @@
-import $ from 'jquery';
-import RestaurantAPISource from '../../data/restaurant-API-source';
-import '../../components/item-container';
-import '../../components/search-bar';
-import '../../components/error-element';
-import addResponsiveEvent from '../../utils/responsive-pages';
+import $ from "jquery";
+import RestaurantAPISource from "../../data/restaurant-API-source";
+import "../../components/item-container";
+import "../../components/search-bar";
+import "../../components/error-element";
+import addResponsiveEvent from "../../utils/responsive-pages";
 
 const Restaurants = {
   async render() {
@@ -34,22 +34,22 @@ const Restaurants = {
   async afterRender() {
     const restaurants = await RestaurantAPISource.restaurantsList();
     addResponsiveEvent({
-      HeroResize: '#hero-img',
+      HeroResize: "#hero-img",
       BodyResize: {
-        imageId: '#hero-img',
-        bodyClass: '.item-catalogue',
+        imageId: "#hero-img",
+        bodyClass: ".item-catalogue",
       },
       ImageOverlayResize: {
-        imageId: '#hero-img',
-        overlayClass: '.overlay-desc',
+        imageId: "#hero-img",
+        overlayClass: ".overlay-desc",
       },
-      AdjustGridColumn: '#hero-img',
+      AdjustGridColumn: "#hero-img",
     });
     if (restaurants instanceof Error) {
-      $('.item-catalogue').append('<error-element></error-element>');
-      $('error-element')[0].renderError('noConnectionMainPage');
+      $(".item-catalogue").append("<error-element></error-element>");
+      $("error-element")[0].renderError("noConnectionMainPage");
     } else {
-      $('item-container')[0].render(restaurants, 'menu-item');
+      $("item-container")[0].render(restaurants, "menu-item");
     }
   },
 };

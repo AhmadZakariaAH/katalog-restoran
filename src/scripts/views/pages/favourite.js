@@ -1,8 +1,8 @@
-import $ from 'jquery';
-import FavouriteRestaurantIdb from '../../data/favourite-restaurant-idb';
-import '../../components/item-container';
-import '../../components/error-element';
-import addResponsiveEvent from '../../utils/responsive-pages';
+import $ from "jquery";
+import FavouriteRestaurantIdb from "../../data/favourite-restaurant-idb";
+import "../../components/item-container";
+import "../../components/error-element";
+import addResponsiveEvent from "../../utils/responsive-pages";
 
 const Favourite = {
   async render() {
@@ -32,22 +32,22 @@ const Favourite = {
   async afterRender() {
     const restaurants = await FavouriteRestaurantIdb.getAllRestaurant();
     addResponsiveEvent({
-      HeroResize: '#hero-img',
+      HeroResize: "#hero-img",
       BodyResize: {
-        imageId: '#hero-img',
-        bodyClass: '.item-catalogue',
+        imageId: "#hero-img",
+        bodyClass: ".item-catalogue",
       },
       ImageOverlayResize: {
-        imageId: '#hero-img',
-        overlayClass: '.overlay-desc',
+        imageId: "#hero-img",
+        overlayClass: ".overlay-desc",
       },
-      AdjustGridColumn: '#hero-img',
+      AdjustGridColumn: "#hero-img",
     });
     if (!restaurants.length) {
-      $('.item-catalogue').append('<error-element></error-element>');
-      $('error-element')[0].renderError('noFavourite');
+      $(".item-catalogue").append("<error-element></error-element>");
+      $("error-element")[0].renderError("noFavourite");
     } else {
-      $('item-container')[0].render(restaurants, 'menu-item');
+      $("item-container")[0].render(restaurants, "menu-item");
     }
   },
 };

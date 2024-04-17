@@ -1,10 +1,10 @@
-import $ from 'jquery';
-import UrlParser from '../../routes/url-parser';
-import RestaurantAPISource from '../../data/restaurant-API-source';
-import '../../components/restaurant-detail';
-import '../../components/error-element';
-import addResponsiveEvent from '../../utils/responsive-pages';
-import FavouriteButtonInitiator from '../../utils/favourite-button-initiator';
+import $ from "jquery";
+import UrlParser from "../../routes/url-parser";
+import RestaurantAPISource from "../../data/restaurant-API-source";
+import "../../components/restaurant-detail";
+import "../../components/error-element";
+import addResponsiveEvent from "../../utils/responsive-pages";
+import FavouriteButtonInitiator from "../../utils/favourite-button-initiator";
 
 const Detail = {
   async render() {
@@ -18,15 +18,16 @@ const Detail = {
     const detail = await RestaurantAPISource.detailRestaurants(url.id);
 
     if (detail instanceof Error) {
-      const errorType = detail.message === 'Restaurant not found'
-        ? 'pageNotFound'
-        : 'noConnection';
-      $('#mainContent').append('<error-element></error-element>');
-      $('error-element')[0].renderError(errorType);
+      const errorType =
+        detail.message === "Restaurant not found"
+          ? "pageNotFound"
+          : "noConnection";
+      $("#mainContent").append("<error-element></error-element>");
+      $("error-element")[0].renderError(errorType);
     } else {
-      $('restaurant-detail')[0].render(detail);
+      $("restaurant-detail")[0].render(detail);
       FavouriteButtonInitiator.init({
-        favouriteButtonContainer: $('#favouriteButtonContainer'),
+        favouriteButtonContainer: $("#favouriteButtonContainer"),
         restaurant: {
           city: detail.city,
           description: detail.description,
@@ -42,10 +43,10 @@ const Detail = {
         HeroResize: `#detail-image${detail.pictureId}`,
         BodyResize: {
           imageId: `#detail-image${detail.pictureId}`,
-          bodyClass: '.detail-body',
+          bodyClass: ".detail-body",
         },
       },
-      `#detail-image${detail.pictureId}`,
+      `#detail-image${detail.pictureId}`
     );
   },
 };

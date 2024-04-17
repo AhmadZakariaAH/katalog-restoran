@@ -1,9 +1,9 @@
-import $ from 'jquery';
-import FavouriteRestaurantIdb from '../data/favourite-restaurant-idb';
+import $ from "jquery";
+import FavouriteRestaurantIdb from "../data/favourite-restaurant-idb";
 import {
   createFavouriteButtonTemplate,
   createFavouritedButtonTemplate,
-} from '../views/templates/template-creator';
+} from "../views/templates/template-creator";
 
 const FavouriteButtonInitiator = {
   async init({ favouriteButtonContainer, restaurant }) {
@@ -31,7 +31,7 @@ const FavouriteButtonInitiator = {
   _renderFavourite() {
     this._favouriteButtonContainer.html(createFavouriteButtonTemplate());
 
-    $('#favouriteButton').on('click', async () => {
+    $("#favouriteButton").on("click", async () => {
       await FavouriteRestaurantIdb.putRestaurant(this._restaurant);
       this._renderButton();
     });
@@ -40,7 +40,7 @@ const FavouriteButtonInitiator = {
   _renderFavourited() {
     this._favouriteButtonContainer.html(createFavouritedButtonTemplate());
 
-    $('#favouritedButton').on('click', async () => {
+    $("#favouritedButton").on("click", async () => {
       await FavouriteRestaurantIdb.deleteRestaurant(this._restaurant.id);
       this._renderButton();
     });

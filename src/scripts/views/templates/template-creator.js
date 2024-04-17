@@ -1,4 +1,4 @@
-import CONFIG from '../../globals/config';
+import CONFIG from "../../globals/config";
 
 const restaurantTemplate = (restaurant) => `<style>
 .main-container {
@@ -360,6 +360,193 @@ const createFavouriteButtonTemplate = () => `
 const createFavouritedButtonTemplate = () => `
 <button type="button" id="favouritedButton"><i class="fas fa-minus fa-large favourite-icon"></i>Remove from Favourite</button>
 `;
+
+const newsItemTemplate = (data, date) => `
+<style>
+        .news-container img {
+            grid-area: 1 / 1;
+            width: 100%;
+            height: auto;
+        }
+        .news-overlay-holder {
+            display: flex;
+            grid-area: 1 / 1;
+            justify-content: center;
+            align-items: flex-end;
+            background: none;
+            flex-wrap: wrap;
+        }
+        .news-desc {
+            background-color: rgba(0,0,0,0.75);
+            color: white;
+            padding: 16px;
+            width: 100%;
+        }
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+        .news-meta time {
+            padding-bottom: 8px;
+        }
+        .news-meta a {
+            display: inline-flex;
+            min-height: 44px;
+            font-size: 18px;
+            align-items: center;
+        }
+        </style>
+        <figure class="news-container">
+          <img src="${data.pictureId}" alt="${data.alt}">
+          <figcaption class="news-overlay-holder">
+            <div class="news-desc">
+            <h1>${data.title}</h1>
+            <div class="news-meta">
+            <time datetime="${data.date}">${date}</time>
+            <a href="http://www.example.com" target="blank"><span style="color: lightblue">Read more</span></a>
+            </div>
+            </div>
+            
+          </figcaption>
+        </figure>`;
+
+const othersPageTemplate = () => `
+        <section class="hero">
+          <img
+            id="hero-img"
+            src="./images/heros/hero-image_1.jpg"
+            alt="Hero image"
+          />
+          <div class="hero-overlay">
+            <div class="overlay-desc">
+              <q
+                >Discover the best eateries near you! From cozy cafes to upscale
+                dining, find your perfect culinary experience with Taste Treat.
+              </q>
+            </div>
+          </div>
+        </section>
+        <section class="main-section">
+        <div class="reservation">
+          <h1 class="section-title">Reservation</h1>
+          <form id="reservation-form">
+            <fieldset>
+              <legend>User Information</legend>
+              <div class="reservation-grid-container">
+                <div>
+                  <label for="reservation-restaurant">Restaurant</label><br />
+                  <select
+                    name="reservation-restaurant"
+                    id="reservation-restaurant"
+                  ></select
+                  ><br />
+                  <br />
+                </div>
+                <div>
+                  <label for="reservation-name">Name *</label><br />
+                  <input
+                    id="reservation-name"
+                    name="reservation-name"
+                    type="text"
+                    required
+                  /><br />
+                  <br />
+                </div>
+              </div>
+              <div class="reservation-grid-container">
+                <div>
+                  <label for="reservation-date">Date of reservation *</label
+                  ><br />
+                  <input id="reservation-date" type="date" required /><br />
+                  <br />
+                </div>
+                <div>
+                  <label for="reservation-time">Time of reservation *</label
+                  ><br />
+                  <div class="reservation-flex-container">
+                    <div class="reservation-time-container">
+                      <label
+                        class="reservation-time-label"
+                        for="reservation-time-from"
+                        >From:</label
+                      >
+                      <div>
+                        <input
+                          id="reservation-time-from"
+                          name="reservation-time-from"
+                          type="time"
+                          required
+                        /><br />
+                      </div>
+                    </div>
+                    <div class="reservation-time-container">
+                      <label
+                        class="reservation-time-label"
+                        for="reservation-time-to"
+                        >to:</label
+                      >
+                      <div>
+                        <input
+                          id="reservation-time-to"
+                          name="reservation-time-to"
+                          type="time"
+                          required
+                        /><br />
+                      </div>
+                    </div>
+                  </div>
+                  <br />
+                </div>
+              </div>
+              <div class="reservation-grid-container">
+                <div>
+                  <label for="reservation-guests">Number of Guests *</label
+                  ><br />
+                  <input
+                    id="reservation-guests"
+                    name="reservation-guests"
+                    type="number"
+                    required /><br />
+                  <br />
+                </div>
+                <div>
+                  <label for="reservation-contact">Phone number *</label><br />
+                  <input
+                    id="reservation-contact"
+                    name="reservation-contact"
+                    type="tel"
+                    pattern="\\+[0-9]{11,13}"
+                    title="Please enter a phone number between 11 and 13 digits"
+                    required
+                  /><br />
+                  <br />
+                </div>
+              </div>
+              <label for="reservation-notes">Notes</label><br />
+              <textarea
+                name="reservation-notes"
+                id="reservation-notes"
+              ></textarea
+              ><br />
+              <br />
+            </fieldset>
+            <div>
+              <input type="reset" id="form-reset" />
+              <button type="submit" id="form-button" />Submit</button>
+            </div>
+          </form>
+        </div>
+        <div class="news">
+          <h1 class="section-title">Recent News</h1>
+          <news-container></news-container>
+          <h2 class="older-news">
+            <a href="http://www.example.com">See older news</a>
+          </h2>
+        </div>
+      </section>
+    `;
+
 export {
   restaurantTemplate,
   detailTemplate,
@@ -368,4 +555,6 @@ export {
   addReviewTemplate,
   createFavouriteButtonTemplate,
   createFavouritedButtonTemplate,
+  newsItemTemplate,
+  othersPageTemplate,
 };
