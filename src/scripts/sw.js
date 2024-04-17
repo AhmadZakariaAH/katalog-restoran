@@ -8,10 +8,11 @@ const assetsToCache = [
   "./icons/icon192x192.png",
   "./icons/icon512x512.png",
   "./index.html",
-  "./icons/tasteTrail-icon.png",
+  "./icons/favicon.png",
   "./app.bundle.js",
   "./app.webmanifest",
   "./sw.bundle.js",
+  "./NEWS.json",
 ];
 
 self.addEventListener("install", (event) => {
