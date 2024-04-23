@@ -1,6 +1,6 @@
-import $ from "jquery";
-import transformDate from "../utils/transformDate-helper";
-import { newsItemTemplate } from "../views/templates/template-creator";
+import $ from 'jquery';
+import transformDate from '../utils/transformDate-helper';
+import { newsItemTemplate } from '../views/templates/template-creator';
 
 class NewsItem extends HTMLElement {
   render(data) {
@@ -13,4 +13,4 @@ class NewsItem extends HTMLElement {
   }
 }
 
-customElements.define("news-item", NewsItem);
+customElements.define('news-item', NewsItem);

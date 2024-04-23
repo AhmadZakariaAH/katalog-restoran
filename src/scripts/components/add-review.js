@@ -1,7 +1,7 @@
-import $ from "jquery";
-import { addReviewTemplate } from "../views/templates/template-creator";
-import RestaurantAPISource from "../data/restaurant-API-source";
-import "./error-element";
+import $ from 'jquery';
+import { addReviewTemplate } from '../views/templates/template-creator';
+import RestaurantAPISource from '../data/restaurant-API-source';
+import './error-element';
 
 class AddReview extends HTMLElement {
   connectedCallback() {
@@ -11,29 +11,29 @@ class AddReview extends HTMLElement {
   render() {
     $(this).html(addReviewTemplate);
     $(this)
-      .find("#addReviewButton")
-      .on("click", () => {
-        $("#addReviewButton").css("display", "none");
-        $("#addReviewForm").css("display", "block");
+      .find('#addReviewButton')
+      .on('click', () => {
+        $('#addReviewButton').css('display', 'none');
+        $('#addReviewForm').css('display', 'block');
       });
-    $("#reviewCancelButton").on("click", () => {
-      $("#addReviewForm").css("display", "none");
-      $("#addReviewButton").css("display", "block");
+    $('#reviewCancelButton').on('click', () => {
+      $('#addReviewForm').css('display', 'none');
+      $('#addReviewButton').css('display', 'block');
     });
-    $("#addReviewForm").on("submit", async (event) => {
+    $('#addReviewForm').on('submit', async (event) => {
       event.preventDefault();
       const reviewData = {
-        id: $(this).attr("id"),
-        name: $("#addReviewName").val(),
-        review: $("#addReviewText").val(),
+        id: $(this).attr('id'),
+        name: $('#addReviewName').val(),
+        review: $('#addReviewText').val(),
       };
       const postReview = await RestaurantAPISource.postReview(reviewData);
-      if (postReview === "ERROR") {
-        $(this).before("<error-element></error-element>");
-        $("error-element")[0].renderError("postFailed");
+      if (postReview === 'ERROR') {
+        $(this).before('<error-element></error-element>');
+        $('error-element')[0].renderError('postFailed');
       }
     });
   }
 }
 
-customElements.define("add-review", AddReview);
+customElements.define('add-review', AddReview);

@@ -13,14 +13,26 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
+      preconnect
     />
     <link rel="manifest" href="./app.webmanifest" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./icons/icon180x180-white.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="192x192"
+      href="./icons/icon192x192-white.png"
+    />
+    <link rel="preconnect" href="https://restaurant-api.dicoding.dev/" />
   </head>
 
   <body>
-    <a href="#mainContent" class="skip-link"></a>
+    <a class="skip-link"></a>
     <loading-indicator id="loadingIndicator"></loading-indicator>
-    <header>
+    <header id="header">
       <hgroup class="main-head">
         <div id="nav-brand">
           <h1>Taste Treat</h1>
@@ -45,8 +57,8 @@
         </ul>
       </nav>
     </header>
-    <main id="mainContent"></main>
-    <footer>
+    <main id="mainContent" tabindex="0"></main>
+    <footer id="footer">
       <h3>Copyright &copy; 2024 - Taste Treat. Powered by:</h3>
       <h4>
         <a id="footerLink" href="https://restaurant-api.dicoding.dev/"

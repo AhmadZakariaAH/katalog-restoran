@@ -1,23 +1,26 @@
-import "regenerator-runtime";
-import "../styles/main.scss";
-import $ from "jquery";
-import "./components/item-container";
-import App from "./views/app";
-import swRegister from "./utils/sw-register";
+import 'regenerator-runtime';
+import '../styles/main.scss';
+import '../styles/components.scss';
+import $ from 'jquery';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+import './components/item-container';
+import App from './views/app';
+import swRegister from './utils/sw-register';
 
 const app = new App({
-  button: $("#hamburgerButton"),
-  drawer: $(".nav-mobile"),
-  content: $("#mainContent"),
-  loadingIndicator: $("#loadingIndicator"),
-  skipLink: $(".skip-link"),
+  button: $('#hamburgerButton'),
+  drawer: $('.nav-mobile'),
+  content: $('#mainContent'),
+  loadingIndicator: $('#loadingIndicator'),
+  skipLink: $('.skip-link'),
 });
 
-$(window).on("hashchange", () => {
+$(window).on('hashchange', () => {
   app.renderPage();
 });
 
-$(window).on("load", () => {
+$(window).on('load', () => {
   app.renderPage();
   swRegister();
 });

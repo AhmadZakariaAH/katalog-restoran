@@ -67,7 +67,7 @@ header {
 
   h1 {
     margin-left: 16px;
-    font-family: "Allura";
+    font-family: "Allura", sans-serif;
   }
 }
 
@@ -111,6 +111,7 @@ a {
   min-width: 48px;
   min-height: 48px;
   line-height: 48px;
+  display: inline-block;
 }
 
 .hero img {
@@ -136,8 +137,14 @@ a {
 
 #hero-img {
   display: block;
-  grid-area: 1 / 1;
   justify-items: center;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+#heroPicture {
+  grid-area: 1 / 1;
 }
 
 .section-title {
@@ -155,6 +162,7 @@ item-container {
   display: grid;
   grid-template-rows: 1fr;
   grid-gap: 20px;
+  place-items: center;
 }
 
 input {
@@ -347,13 +355,6 @@ loading-indicator {
   }
 }
 
-@media screen and (max-width: 1199px) {
-  #hero-img {
-    width: 100%;
-    height: auto;
-  }
-}
-
 @media screen and (max-width: 425px) {
   .news-container {
     margin: 16px;
@@ -374,8 +375,6 @@ loading-indicator {
 
 @media screen and (min-width: 1200px) {
   #hero-img {
-    width: 100vw;
-    object-fit: cover;
     min-width: 1000px;
   }
 }

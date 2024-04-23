@@ -1,4 +1,4 @@
-import $ from "jquery";
+import $ from 'jquery';
 
 class LoadingIndicator extends HTMLElement {
   render() {
@@ -9,4 +9,4 @@ class LoadingIndicator extends HTMLElement {
   }
 }
 
-customElements.define("loading-indicator", LoadingIndicator);
+customElements.define('loading-indicator', LoadingIndicator);

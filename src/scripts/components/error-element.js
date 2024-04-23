@@ -1,11 +1,11 @@
-import $ from "jquery";
+import $ from 'jquery';
 import {
   fetchFailedTemplate,
   pageNotFoundTemplate,
   postFailedTemplate,
   fetchFailedMainPageTemplate,
   noFavourite,
-} from "../views/templates/template-error";
+} from '../views/templates/template-error';
 
 class ErrorElement extends HTMLElement {
   renderError(error) {
@@ -33,4 +33,4 @@ class ErrorElement extends HTMLElement {
   }
 }
 
-customElements.define("error-element", ErrorElement);
+customElements.define('error-element', ErrorElement);
