@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import { restaurantTemplate } from '../views/templates/template-creator';
-import addResponsiveEvent from '../utils/responsive-pages';
 
 class MenuItem extends HTMLElement {
   render(data) {
@@ -10,12 +9,6 @@ class MenuItem extends HTMLElement {
     $(`#item-${data.id}`)
       .find('.img-container > img')
       .attr('id', `img-${data.id}`);
-
-    /* $(`#img-${data.id}`).on("load", () => {
-      addResponsiveEvent({
-        AdjustItemHeight: data.id,
-      });
-    }); */
   }
 }
 

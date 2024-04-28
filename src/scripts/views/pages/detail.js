@@ -3,8 +3,8 @@ import UrlParser from '../../routes/url-parser';
 import RestaurantAPISource from '../../data/restaurant-API-source';
 import '../../components/restaurant-detail';
 import '../../components/error-element';
-import addResponsiveEvent from '../../utils/responsive-pages';
-import FavouriteButtonInitiator from '../../utils/favourite-button-initiator';
+import FavouriteButtonInitiator from '../../utils/favourite-button-presenter';
+import FavouriteRestaurantIdb from '../../data/favourite-restaurant-idb';
 
 const Detail = {
   async render() {
@@ -16,7 +16,6 @@ const Detail = {
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const detail = await RestaurantAPISource.detailRestaurants(url.id);
-
     if (detail instanceof Error) {
       const errorType = detail.message === 'Restaurant not found'
         ? 'pageNotFound'
@@ -27,6 +26,7 @@ const Detail = {
       $('restaurant-detail')[0].render(detail);
       FavouriteButtonInitiator.init({
         favouriteButtonContainer: $('#favouriteButtonContainer'),
+        favouriteRestaurant: FavouriteRestaurantIdb,
         restaurant: {
           city: detail.city,
           description: detail.description,
@@ -37,16 +37,6 @@ const Detail = {
         },
       });
     }
-    addResponsiveEvent(
-      {
-        HeroResize: `#detail-image${detail.pictureId}`,
-        BodyResize: {
-          imageId: `#detail-image${detail.pictureId}`,
-          bodyClass: '.detail-body',
-        },
-      },
-      `#detail-image${detail.pictureId}`,
-    );
   },
 };
 

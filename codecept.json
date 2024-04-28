@@ -1,0 +1,15 @@
+{
+  "tests": "e2e/**/*.test.js",
+  "timeout": 10000,
+  "output": "e2e/output",
+  "helpers": {
+    "Puppeteer": {
+      "url": "http://localhost:8080",
+      "show": false
+    }
+  },
+  "include": {},
+  "bootstrap": false,
+  "mocha": {},
+  "name": "restaurant-apps-starter-project"
+}

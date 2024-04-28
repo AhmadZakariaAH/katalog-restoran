@@ -24,7 +24,7 @@ const restaurantTemplate = (restaurant) => `
 `;
 
 const detailTemplate = (restaurant) => `
-<article class="main-container">
+<article class="detail-main-container">
   <section class="detail-img-container">
     <img
       class="detail-image" 
@@ -167,12 +167,33 @@ const newsItemTemplate = (data, date) => `
         </figure>`;
 
 const othersPageTemplate = () => `
-        <section class="hero">
-          <img
-            id="hero-img"
-            src="./images/heros/hero-image_1.jpg"
-            alt="Hero image"
-          />
+  <section class="hero">
+    <picture id="heroPicture">
+      <source 
+        type="image/webp" 
+        srcset="./images/heros/hero-image_1-small.webp"
+        media="(max-width: 425px)">
+      <source 
+        type="image/webp" 
+        srcset="./images/heros/hero-image_1-medium.webp"
+        media="(max-width: 768px)">
+      <source 
+        type="image/webp" 
+        srcset="./images/heros/hero-image_1-large.webp">
+      <source 
+        type="image/jpeg" 
+        srcset="./images/heros/hero-image_1-small.jpg"
+        media="(max-width: 425px)">
+      <source 
+        type="image/jpeg" 
+        srcset="./images/heros/hero-image_1-medium.jpg"
+        media="(max-width: 768px)">
+      <img
+        id="hero-img"
+        src="./images/heros/hero-image_1-large.jpg"
+        alt="Hero image"
+      />
+    </picture>
           <div class="hero-overlay">
             <div class="overlay-desc">
               <q

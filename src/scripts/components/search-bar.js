@@ -13,7 +13,9 @@ class SearchBar extends HTMLElement {
       .on('submit', (event) => {
         event.preventDefault();
         const query = $(this).find('#search-restaurants').val();
-        window.location.href = `#/search/${query === '' ? '-' : query}`;
+        window.location.href = `#/search/${
+          query.trim().length === 0 ? '-' : query
+        }`;
       });
   }
 }

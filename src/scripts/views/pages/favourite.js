@@ -2,7 +2,6 @@ import $ from 'jquery';
 import FavouriteRestaurantIdb from '../../data/favourite-restaurant-idb';
 import '../../components/item-container';
 import '../../components/error-element';
-import { heroTemplate } from '../templates/template-creator';
 
 const Favourite = {
   async render() {

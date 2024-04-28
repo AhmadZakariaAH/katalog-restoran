@@ -10,6 +10,7 @@ class AddReview extends HTMLElement {
 
   render() {
     $(this).html(addReviewTemplate);
+    $('#addReviewForm').css('display', 'none');
     $(this)
       .find('#addReviewButton')
       .on('click', () => {
